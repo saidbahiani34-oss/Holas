@@ -186,10 +186,10 @@ const fetchLiveSignals = async () => {
 
         if (strategyName) {
           const entry = currentPrice;
-          const sl = currentPrice * 0.985; // 1.5% stop loss
-          const t1 = currentPrice * 1.012; // 1.20% target
-          const t2 = currentPrice * 1.02; // 2% target
-          const t3 = currentPrice * 1.035; // 3.5% target
+          const sl = currentPrice * 0.987; // 1.3% stop loss
+          const t1 = currentPrice * 1.015; // 1.5% target
+          const t2 = currentPrice * 1.025; // 2.5% target
+          const t3 = currentPrice * 1.04;  // 4.0% target
 
           const formatPrice = (p: number) => {
             if (p < 0.01) return p.toFixed(6);
