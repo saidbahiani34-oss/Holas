@@ -170,15 +170,15 @@ const fetchLiveSignals = async () => {
         let analysisText = '';
         let action: 'buy' | 'sell' = 'buy';
 
-        if (rsi < 40) {
+        if (rsi < 35) {
           strategyName = 'RSI Oversold (1h)';
           analysisText = `مؤشر القوة النسبية (RSI) وصل إلى ${rsi.toFixed(2)} مما يدل على تشبع بيعي قوي وفرصة ارتداد محتملة.`;
           action = 'buy';
-        } else if (volumeSpike && rsi < 70 && priceChange > 1.5) {
+        } else if (volumeSpike && rsi < 65 && priceChange > 2.0) {
           strategyName = 'Volume Breakout (1h)';
           analysisText = `تم رصد انفجار في حجم التداول (Volume) أعلى من المتوسط بـ 200% مع صعود بنسبة ${priceChange.toFixed(2)}%.`;
           action = 'buy';
-        } else if (priceChange > 3.0 && currentVolume > avgVolume * 1.5) {
+        } else if (priceChange > 4.0 && currentVolume > avgVolume * 2.0) {
           strategyName = 'Momentum Surge (1h)';
           analysisText = `زخم صعودي قوي! السعر ارتفع بنسبة ${priceChange.toFixed(2)}% مع سيولة عالية.`;
           action = 'buy';
