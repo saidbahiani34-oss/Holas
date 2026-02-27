@@ -302,7 +302,7 @@ const checkPrices = async () => {
       const sl = parseFloat(signal.stopLoss);
 
       if (signal.action === 'buy') {
-        if (currentPrice <= sl) {
+        if (currentPrice <= sl && status === 'active') {
           newStatus = 'sl';
           message = `🛑 <b>ضرب وقف الخسارة</b>\nالزوج: #${signal.pair.base}\nالسعر الحالي: ${currentPrice}\nالمتداول: ${signal.traderName}`;
         } else if (currentPrice >= t3) {
@@ -349,7 +349,7 @@ setTimeout(fetchLiveSignals, 2000);
 
 async function startServer() {
   const app = express();
-  const PORT = process.env.PORT || 3000;
+  const PORT = parseInt(process.env.PORT || "3000", 10);
 
   app.use(express.json());
 
